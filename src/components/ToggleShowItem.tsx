@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Counter from "@/components/Counter";
 
-const Tree = () => {
+const ToggleShowItem = () => {
     const [toggle, setToggle] = useState(true);
     const [countPrimary, setCountPrimary] = useState(0)
     const [countSecondary, setCountSecondary] = useState(0)
@@ -20,8 +20,7 @@ const Tree = () => {
                 <Counter key='secondary' componentText='secondary' count={countSecondary} setCount={setCountSecondary} />
             }
         </>
-
     );
-};
+}
 
-export default Tree;
+export default ToggleShowItem;

@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.tree-box-style {
+  border: 2px solid red;
+  padding: 20px;
+}
