@@ -3,6 +3,8 @@ import Counter from "./Counter";
 
 const Tree = () => {
     const [toggle, setToggle] = useState(false);
+    const [countPrimary, setCountPrimary] = useState(0)
+    const [countSecondary, setCountSecondary] = useState(0)
 
     const onClickToggle = () => {
         setToggle((prev) => !prev);
@@ -13,7 +15,10 @@ const Tree = () => {
             <button onClick={onClickToggle} >
                 切替
             </button>
-            { toggle ? <Counter key='primary' /> : <Counter key='secondary' /> }
+            { toggle ?
+                <Counter key='primary' componentText='primary' count={countPrimary} setCount={setCountPrimary} /> :
+                <Counter key='secondary' componentText='secondary' count={countSecondary} setCount={setCountSecondary} />
+            }
         </>
 
     );

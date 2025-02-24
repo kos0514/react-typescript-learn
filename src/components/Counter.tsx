@@ -1,23 +1,28 @@
-import { useState } from 'react'
 import '../App.css'
+import * as React from "react";
 
-const Counter = () => {
-    const [count, setCount] = useState(0)
+type CounterProps = {
+  componentText: string;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+};
 
+const Counter = ( { componentText, count, setCount } : CounterProps ) => {
     const onClickCounter = () => {
         setCount((count) => count + 1);
     };
 
-    const onClickCounterReset = () => {
+    const onClickReset = () => {
         setCount(0);
     };
 
     return (
         <div className="card">
+            <h3>{componentText}</h3>
             <button onClick={onClickCounter}>
                 count is {count}
             </button>
-            <button onClick={onClickCounterReset}>
+            <button onClick={onClickReset}>
                 reset
             </button>
             <p>
