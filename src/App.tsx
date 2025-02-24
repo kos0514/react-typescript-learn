@@ -1,14 +1,14 @@
 import Title from "./components/Title";
-import Counter from "./components/Counter";
 import Logo from "./components/Logo";
 import Message from "./components/Message.tsx";
+import Tree from "./components/Tree.tsx";
 
 function App() {
   return (
     <>
       <Title title="Vite + React" />
       <Logo />
-      <Counter />
+      <Tree />
       <Message />
     </>
   );
