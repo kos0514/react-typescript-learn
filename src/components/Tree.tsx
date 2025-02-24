@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Counter from "./Counter";
+import Counter from "@/components/Counter";
 
 const Tree = () => {
     const [toggle, setToggle] = useState(false);

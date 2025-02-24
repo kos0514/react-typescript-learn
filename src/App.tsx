@@ -1,7 +1,7 @@
-import Title from "./components/Title";
-import Logo from "./components/Logo";
-import Message from "./components/Message.tsx";
-import Tree from "./components/Tree.tsx";
+import Title from "@/components/Title";
+import Logo from "@/components/Logo";
+import Message from "@/components/Message.tsx";
+import Tree from "@/components/Tree.tsx";
 
 function App() {
   return (

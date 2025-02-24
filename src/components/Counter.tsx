@@ -1,4 +1,4 @@
-import '../App.css'
+import '@/App.css'
 import * as React from "react";
 
 type CounterProps = {
