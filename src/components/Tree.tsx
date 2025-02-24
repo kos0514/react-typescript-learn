@@ -2,7 +2,7 @@ import { useState } from "react";
 import Counter from "@/components/Counter";
 
 const Tree = () => {
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
     const [countPrimary, setCountPrimary] = useState(0)
     const [countSecondary, setCountSecondary] = useState(0)
 
