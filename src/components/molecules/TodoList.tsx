@@ -1,5 +1,5 @@
 import * as React from "react";
-import CommonButton from "@/components/atom/CommonButton.tsx";
+import CommonButton from "@/components/atom/CommonButton";
 
 type TodoListProps = {
     todoList: string[];

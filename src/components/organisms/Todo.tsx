@@ -1,7 +1,7 @@
 import {useState} from "react";
-import AddTodoForm from "@/components/molecules/AddTodoForm.tsx";
-import SubTitle from "@/components/atom/SubTitle.tsx";
-import TodoList from "@/components/molecules/TodoList.tsx";
+import AddTodoForm from "@/components/molecules/AddTodoForm";
+import SubTitle from "@/components/atom/SubTitle";
+import TodoList from "@/components/molecules/TodoList";
 
 const Todo = () => {
     const [todoList, setTodoList] = useState<string[]>(

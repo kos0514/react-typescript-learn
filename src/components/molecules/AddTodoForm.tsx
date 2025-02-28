@@ -1,5 +1,5 @@
-import PostTextField from "@/components/atom/PostTextField.tsx";
-import CommonButton from "@/components/atom/CommonButton.tsx";
+import PostTextField from "@/components/atom/PostTextField";
+import CommonButton from "@/components/atom/CommonButton";
 import {useState} from "react";
 
 type AddTodoFormProps = {

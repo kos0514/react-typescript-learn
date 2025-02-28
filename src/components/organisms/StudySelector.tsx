@@ -1,8 +1,8 @@
 import '@/App.css'
-import ToggleShowItem from "@/components/organisms/ToggleShowItem.tsx";
+import ToggleShowItem from "@/components/organisms/ToggleShowItem";
 import  {useState} from "react";
 import * as React from "react";
-import Todo from "@/components/organisms/Todo.tsx";
+import Todo from "@/components/organisms/Todo";
 
 const STUDY_COMPONENTS = {
     ToggleShowItem: <ToggleShowItem />,
