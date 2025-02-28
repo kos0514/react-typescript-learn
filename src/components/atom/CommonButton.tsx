@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+
 type commonButtonProps = {
     label: string;
     onClick: () => void;
@@ -5,9 +7,9 @@ type commonButtonProps = {
 
 const CommonButton = ({label, onClick}: commonButtonProps) => {
     return (
-        <button onClick={onClick}>
+        <Button variant="outlined" onClick={onClick} >
             {label}
-        </button>
+        </Button>
     )
 }
 

@@ -1,5 +1,6 @@
 import '@/App.css'
 import * as React from "react";
+import CommonButton from "@/components/atom/CommonButton.tsx";
 
 type CounterProps = {
   componentText: string;
@@ -17,18 +18,11 @@ const Counter = ( { componentText, count, setCount } : CounterProps ) => {
     };
 
     return (
-        <div className="card">
+        <>
             <h3>{componentText}</h3>
-            <button onClick={onClickCounter}>
-                count is {count}
-            </button>
-            <button onClick={onClickReset}>
-                reset
-            </button>
-            <p>
-                Edit <code>src/components/Counter.tsx</code> and save to test HMR
-            </p>
-        </div>
+            <CommonButton label={`count is: ${count}`} onClick={onClickCounter} />
+            <CommonButton label='reset' onClick={onClickReset} />
+        </>
     );
 };
 

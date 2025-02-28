@@ -1,5 +1,7 @@
 import * as React from "react";
 import CommonButton from "@/components/atom/CommonButton";
+import { List, ListItem, ListItemText } from '@mui/material';
+import Typography from "@mui/material/Typography";
 
 type TodoListProps = {
     todoList: string[];
@@ -13,14 +15,18 @@ const TodoList = ({todoList, setTodoList}:TodoListProps) => {
     };
 
     return (
-        <ul>
-            {todoList.map((todo, index) => (
-                <li key={`${index}${todo}`} style={{ listStylePosition: 'inside', textAlign: 'left'}}>
-                    <CommonButton label='完了' onClick={() => onClickCompleteTodo(index)} />
-                    {todo}
-                </li>
-            ))}
-        </ul>
+        <List>
+            {todoList.length === 0 ? (
+                <Typography variant="body1">全て完了しています</Typography>
+            ) : (
+                todoList.map((todo, index) => (
+                    <ListItem key={`${index}${todo}`}>
+                        <CommonButton label='完了' onClick={() => onClickCompleteTodo(index)} />
+                        <ListItemText primary={todo} />
+                    </ListItem>
+                ))
+            )}
+        </List>
     )
 }
 

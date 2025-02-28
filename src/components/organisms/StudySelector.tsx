@@ -1,8 +1,8 @@
 import '@/App.css'
 import ToggleShowItem from "@/components/organisms/ToggleShowItem";
 import  {useState} from "react";
-import * as React from "react";
 import Todo from "@/components/organisms/Todo";
+import { Box, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
 
 const STUDY_COMPONENTS = {
     ToggleShowItem: <ToggleShowItem />,
@@ -15,7 +15,7 @@ type componentType = keyof typeof STUDY_COMPONENTS;
 const StudySelector = () => {
     const [selectedComponent, setSelectedComponent] = useState<componentType>("ToggleShowItem");
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (event: SelectChangeEvent<componentType>) => {
         setSelectedComponent(event.target.value as componentType);
     }
 
@@ -23,15 +23,24 @@ const StudySelector = () => {
 
     return (
         <div className="tree-box-style">
-            <select value={selectedComponent} onChange={handleChange}>
-                {Object.keys(STUDY_COMPONENTS).map((component) => (
-                    <option key={component} value={component}>
-                        {component}
-                    </option>
-                ))}
-            </select>
-            <br /><br />
-            {SelectedComponent}
+            <FormControl fullWidth>
+                <InputLabel id="component-select-label">Component</InputLabel>
+                <Select
+                    labelId="component-select-label"
+                    value={selectedComponent}
+                    onChange={handleChange}
+                    label="Component"
+                >
+                    {Object.keys(STUDY_COMPONENTS).map((component) => (
+                        <MenuItem key={component} value={component}>
+                            {component}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <Box width={300} minHeight={300} mt={3}>
+                {SelectedComponent}
+            </Box>
         </div>
     );
 };
