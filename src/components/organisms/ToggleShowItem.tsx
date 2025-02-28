@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Counter from "@/components/Counter";
+import Counter from "@/components/molecules/Counter.tsx";
 
 const ToggleShowItem = () => {
     const [toggle, setToggle] = useState(true);

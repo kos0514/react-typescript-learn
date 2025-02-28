@@ -1,10 +1,12 @@
 import '@/App.css'
-import ToggleShowItem from "@/components/ToggleShowItem";
+import ToggleShowItem from "@/components/organisms/ToggleShowItem.tsx";
 import  {useState} from "react";
 import * as React from "react";
+import Todo from "@/components/organisms/Todo.tsx";
 
 const STUDY_COMPONENTS = {
     ToggleShowItem: <ToggleShowItem />,
+    Todo : <Todo />,
 } as const;
 
 type componentType = keyof typeof STUDY_COMPONENTS;
