@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Counter from "@/components/molecules/Counter.tsx";
+import SubTitle from "@/components/atom/SubTitle.tsx";
 
 const ToggleShowItem = () => {
     const [toggle, setToggle] = useState(true);
@@ -12,6 +13,7 @@ const ToggleShowItem = () => {
 
     return (
         <>
+            <SubTitle subTitle='カウントボタン' />
             <button onClick={onClickToggle} >
                 切替
             </button>
