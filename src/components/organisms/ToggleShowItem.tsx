@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import Counter from "@/components/molecules/Counter";
 import SubTitle from "@/components/atom/SubTitle";
 import CommonButton from "@/components/atom/CommonButton.tsx";
 import { Grid2 } from "@mui/material";
 
-const ToggleShowItem = () => {
+/**
+ * ToggleShowItemコンポーネントでございます
+ *
+ * @returns {ReactElement} カウントボタンを切り替える機能を持つコンポーネントを返しますの
+ *
+ * @example
+ * // このように『ToggleShowItem』コンポーネントをお使いくださいませ
+ * <ToggleShowItem />
+ */
+const ToggleShowItem = (): ReactElement => {
   const [toggle, setToggle] = useState(true);
   const [countPrimary, setCountPrimary] = useState(0);
   const [countSecondary, setCountSecondary] = useState(0);
 
+  /**
+   * カウントボタンの表示を切り替える処理でございますの
+   */
   const onClickToggle = () => {
     setToggle((prev) => !prev);
   };

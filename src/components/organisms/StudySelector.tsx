@@ -1,6 +1,6 @@
 import "@/App.css";
 import ToggleShowItem from "@/components/organisms/ToggleShowItem";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import Todo from "@/components/organisms/Todo";
 import {
   Box,
@@ -18,10 +18,23 @@ const STUDY_COMPONENTS = {
 
 type componentType = keyof typeof STUDY_COMPONENTS;
 
-const StudySelector = () => {
+/**
+ * StudySelectorコンポーネントでございます
+ *
+ * @returns {ReactElement} 選択されたコンポーネントを表示するセレクターを返しますの
+ *
+ * @example
+ * // このように『StudySelector』コンポーネントをお使いくださいませ
+ * <StudySelector />
+ */
+const StudySelector = (): ReactElement => {
   const [selectedComponent, setSelectedComponent] =
     useState<componentType>("ToggleShowItem");
 
+  /**
+   * コンポーネントの選択が変更されたときの処理でございますの
+   * @param {SelectChangeEvent<componentType>} event - 選択イベントでございますわ
+   */
   const handleChange = (event: SelectChangeEvent<componentType>) => {
     setSelectedComponent(event.target.value as componentType);
   };
