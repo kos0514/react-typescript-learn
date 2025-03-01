@@ -1,9 +1,11 @@
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 
 type subTitleProps = {
-    subTitle : string;
+  subTitle: string;
 };
 
-const SubTitle = ({subTitle} :subTitleProps) => <Typography variant="h4">{subTitle}</Typography>
+const SubTitle = ({ subTitle }: subTitleProps) => (
+  <Typography variant="h4">{subTitle}</Typography>
+);
 
 export default SubTitle;
