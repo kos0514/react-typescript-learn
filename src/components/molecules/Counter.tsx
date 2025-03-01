@@ -1,5 +1,4 @@
 import '@/App.css'
-import * as React from "react";
 import CommonButton from "@/components/atom/CommonButton.tsx";
 
 type CounterProps = {

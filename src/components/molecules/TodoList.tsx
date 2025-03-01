@@ -1,4 +1,3 @@
-import * as React from "react";
 import CommonButton from "@/components/atom/CommonButton";
 import { List, ListItem, ListItemText } from '@mui/material';
 import Typography from "@mui/material/Typography";
