@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 
 type commonButtonProps = {
   /**
@@ -30,8 +30,21 @@ type commonButtonProps = {
  * />
  */
 const CommonButton = ({ label, onClick }: commonButtonProps): ReactElement => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  /**
+   * ボタンがクリックされた際に呼び出されるハンドラーでございますの
+   */
+  const handleClick = () => {
+    onClick();
+
+    if (buttonRef.current) {
+      buttonRef.current.blur();
+    }
+  };
+
   return (
-    <Button variant="outlined" onClick={onClick}>
+    <Button variant="outlined" onClick={handleClick} ref={buttonRef}>
       {label}
     </Button>
   );

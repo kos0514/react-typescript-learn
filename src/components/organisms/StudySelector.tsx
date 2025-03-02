@@ -10,10 +10,12 @@ import {
   InputLabel,
   SelectChangeEvent,
 } from "@mui/material";
+import FocusableInput from "@/components/organisms/FocusableInput.tsx";
 
 const STUDY_COMPONENTS = {
   ToggleShowItem: <ToggleShowItem />,
   Todo: <Todo />,
+  FocusableInput: <FocusableInput />,
 } as const;
 
 type componentType = keyof typeof STUDY_COMPONENTS;
