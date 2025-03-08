@@ -65,7 +65,7 @@ const FizzBuzz = () => {
    * 結果をリセットする関数でございますの
    */
   const resetResults = () => {
-    setCount(0);
+    setCount(1);
     setResults([]);
   };
 
