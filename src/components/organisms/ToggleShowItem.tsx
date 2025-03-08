@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import Counter from "@/components/molecules/Counter";
 import SubTitle from "@/components/atom/SubTitle";
 import CommonButton from "@/components/atom/CommonButton.tsx";
-import { Grid2 } from "@mui/material";
+import { Stack } from "@mui/material";
 
 /**
  * ToggleShowItemコンポーネントでございます
@@ -26,12 +26,10 @@ const ToggleShowItem = (): ReactElement => {
   };
 
   return (
-    <Grid2 container direction="column" spacing={3}>
+    <Stack direction="column" spacing={3}>
       <SubTitle subTitle="カウントボタン" />
-      <Grid2>
-        <CommonButton label="切替" onClick={onClickToggle} />
-      </Grid2>
-      <Grid2>
+      <CommonButton label="切替" onClick={onClickToggle} />
+      <Stack>
         {toggle ? (
           <Counter
             key="primary"
@@ -47,8 +45,8 @@ const ToggleShowItem = (): ReactElement => {
             setCount={setCountSecondary}
           />
         )}
-      </Grid2>
-    </Grid2>
+      </Stack>
+    </Stack>
   );
 };
 

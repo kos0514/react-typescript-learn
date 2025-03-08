@@ -1,7 +1,7 @@
 import PostTextField from "@/components/atom/PostTextField";
 import CommonButton from "@/components/atom/CommonButton";
 import { ReactElement, useState } from "react";
-import Box from "@mui/material/Box";
+import { Stack } from "@mui/material";
 
 type AddTodoFormProps = {
   /**
@@ -38,10 +38,10 @@ const AddTodoForm = ({ handleAddTodo }: AddTodoFormProps): ReactElement => {
   };
 
   return (
-    <Box sx={{ alignItems: "center", display: "flex" }}>
+    <Stack direction="row" spacing={2} alignItems="center">
       <PostTextField label="タスク" value={todoField} setValue={setTodoField} />
       <CommonButton label="追加" onClick={onClickAddTodo} />
-    </Box>
+    </Stack>
   );
 };
 

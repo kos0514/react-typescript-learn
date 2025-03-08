@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import PostTextField from "@/components/atom/PostTextField.tsx";
 import CommonButton from "@/components/atom/CommonButton.tsx";
 import ViewOnlyTextField from "@/components/atom/ViewOnlyTextField.tsx";
@@ -62,21 +62,18 @@ const FocusableInput = () => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" gap={2}>
+    <Stack direction="column" spacing={3}>
       <Typography variant="h6">useRef デモンストレーション</Typography>
-
       <PostTextField
         label="お言葉をご入力ください"
         value={postText}
         setValue={setPostText}
         inputRef={textFieldRef}
       />
-
-      <Box display="flex" gap={2}>
+      <Stack direction="row" spacing={2}>
         <CommonButton label="フォーカスを当てる" onClick={onClickFocusToText} />
-
         <CommonButton label="クリア" onClick={onClickClear} />
-      </Box>
+      </Stack>
 
       <ViewOnlyTextField
         label="最終フォーカス時刻"
@@ -87,7 +84,7 @@ const FocusableInput = () => {
         label="入力文字数"
         value={postText.length.toString()}
       />
-    </Box>
+    </Stack>
   );
 };
 

@@ -1,5 +1,5 @@
 import CommonButton from "@/components/atom/CommonButton";
-import { List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemText, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { ReactElement } from "react";
 
@@ -42,11 +42,13 @@ const TodoList = ({ todoList, setTodoList }: TodoListProps): ReactElement => {
       ) : (
         todoList.map((todo, index) => (
           <ListItem key={`${index}${todo}`}>
-            <CommonButton
-              label="完了"
-              onClick={() => onClickCompleteTodo(index)}
-            />
-            <ListItemText primary={todo} />
+            <Stack spacing={1} direction="row" alignItems="center">
+              <CommonButton
+                label="完了"
+                onClick={() => onClickCompleteTodo(index)}
+              />
+              <ListItemText primary={todo} />
+            </Stack>
           </ListItem>
         ))
       )}

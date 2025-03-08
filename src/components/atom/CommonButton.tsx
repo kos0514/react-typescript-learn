@@ -44,7 +44,7 @@ const CommonButton = ({ label, onClick }: commonButtonProps): ReactElement => {
   };
 
   return (
-    <Button variant="outlined" onClick={handleClick} ref={buttonRef}>
+    <Button variant="contained" onClick={handleClick} ref={buttonRef}>
       {label}
     </Button>
   );

@@ -1,6 +1,8 @@
 import "@/App.css";
 import CommonButton from "@/components/atom/CommonButton.tsx";
 import { ReactElement } from "react";
+import { Stack } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 type CounterProps = {
   /**
@@ -50,11 +52,13 @@ const Counter = ({
   };
 
   return (
-    <>
-      <h3>{componentText}</h3>
-      <CommonButton label={`count is: ${count}`} onClick={onClickCounter} />
-      <CommonButton label="reset" onClick={onClickReset} />
-    </>
+    <Stack spacing={2}>
+      <Typography variant="h5">{componentText}</Typography>
+      <Stack direction="row" justifyContent="center" spacing={2}>
+        <CommonButton label={`count is: ${count}`} onClick={onClickCounter} />
+        <CommonButton label="reset" onClick={onClickReset} />
+      </Stack>
+    </Stack>
   );
 };
 

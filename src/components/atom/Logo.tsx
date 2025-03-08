@@ -1,6 +1,7 @@
 import reactLogo from "@/assets/react.svg";
 import viteLogo from "~/vite.svg";
 import { ReactElement } from "react";
+import { Link, Stack } from "@mui/material";
 
 /**
  * Logoコンポーネントでございます
@@ -15,14 +16,14 @@ import { ReactElement } from "react";
  */
 const Logo = (): ReactElement => {
   return (
-    <div>
-      <a href="https://vite.dev" target="_blank">
+    <Stack direction="row" justifyContent="center" alignItems="center">
+      <Link href="https://vite.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite logo" />
-      </a>
-      <a href="https://react.dev" target="_blank">
+      </Link>
+      <Link href="https://react.dev" target="_blank">
         <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-    </div>
+      </Link>
+    </Stack>
   );
 };
 

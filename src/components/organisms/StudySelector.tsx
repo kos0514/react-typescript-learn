@@ -44,7 +44,7 @@ const StudySelector = (): ReactElement => {
   const SelectedComponent = STUDY_COMPONENTS[selectedComponent];
 
   return (
-    <div className="tree-box-style">
+    <Box className="tree-box-style">
       <FormControl fullWidth>
         <InputLabel id="component-select-label">Component</InputLabel>
         <Select
@@ -63,7 +63,7 @@ const StudySelector = (): ReactElement => {
       <Box width={300} minHeight={300} mt={3}>
         {SelectedComponent}
       </Box>
-    </div>
+    </Box>
   );
 };
 
