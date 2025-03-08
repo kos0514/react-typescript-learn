@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Typography, List, ListItem, Stack } from "@mui/material";
 import SubTitle from "@/components/atom/SubTitle.tsx";
 import CommonButton from "@/components/atom/CommonButton.tsx";
@@ -11,6 +11,7 @@ import CommonButton from "@/components/atom/CommonButton.tsx";
 const FizzBuzz = () => {
   const [count, setCount] = useState<number>(1);
   const [results, setResults] = useState<string[]>([]);
+  const listRef = useRef<HTMLUListElement>(null);
 
   /**
    * 数値をFizzBuzz変換する純粋関数でございますの
@@ -68,6 +69,14 @@ const FizzBuzz = () => {
     setResults([]);
   };
 
+  useEffect(() => {
+    // 結果リストが更新されたときにリストの一番下にスクロールする処理でございますの
+    if (listRef.current) {
+      // リストのスクロール位置をリスト全体の高さに設定して、一番下までスクロールいたしますの
+      listRef.current.scrollTop = listRef.current.scrollHeight;
+    }
+  }, [results]);
+
   return (
     <Stack direction="column" spacing={2}>
       <SubTitle subTitle="純粋関数的FizzBuzz" />
@@ -82,6 +91,7 @@ const FizzBuzz = () => {
       </Typography>
 
       <List
+        ref={listRef}
         sx={{
           maxHeight: 200,
           overflow: "auto",
