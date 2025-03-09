@@ -7,7 +7,10 @@ import {
   Paper,
   Stack,
   Typography,
+  IconButton,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 import PostTextField from "@/components/atom/PostTextField.tsx";
 import CommonButton from "@/components/atom/CommonButton.tsx";
@@ -41,36 +44,83 @@ const initialState: CartState = {
   total: 0,
 };
 
-// TODO: カートの合計金額を計算する関数を実装してください
+/**
+ * カート内のアイテムの合計金額を計算する関数
+ * @param items
+ */
+const calculateTotal = (items: CartItem[]): number => {
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
+};
 
-// TODO: リデューサー関数を実装してください
+/**
+ * カートの状態を管理するリデューサー関数
+ * @param state
+ * @param action
+ */
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case "ADD_ITEM": {
-      // TODO: 商品追加のロジックを実装してください
-      // ヒント: 同じ商品が追加された場合は数量を増やす
-      return state;
+      const existingItem = state.items.find(
+        (item) => item.name.toLowerCase() === action.payload.name.toLowerCase(),
+      );
+
+      const updatedItems = existingItem
+        ? state.items.map((item) =>
+            item.name.toLowerCase() === action.payload.name.toLowerCase()
+              ? { ...item, quantity: item.quantity + action.payload.quantity }
+              : item,
+          )
+        : [...state.items, { id: Date.now(), ...action.payload }];
+
+      return {
+        ...state,
+        items: updatedItems,
+        total: calculateTotal(updatedItems),
+      };
     }
 
     case "REMOVE_ITEM": {
-      // TODO: 商品削除のロジックを実装してください
-      return state;
+      const updatedItems = state.items.filter(
+        (item) => item.id !== action.payload.id,
+      );
+      return {
+        ...state,
+        items: updatedItems,
+        total: calculateTotal(updatedItems),
+      };
     }
 
     case "INCREASE_QUANTITY": {
-      // TODO: 数量増加のロジックを実装してください
-      return state;
+      const updatedItems = state.items.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      );
+      return {
+        ...state,
+        items: updatedItems,
+        total: calculateTotal(updatedItems),
+      };
     }
 
     case "DECREASE_QUANTITY": {
-      // TODO: 数量減少のロジックを実装してください
-      // ヒント: 数量が1未満にならないよう注意
-      return state;
+      const updatedItems = state.items.map((item) => {
+        if (item.id === action.payload.id) {
+          // 数量が1以下なら削除せず最小1を維持
+          const newQuantity = Math.max(1, item.quantity - 1);
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        items: updatedItems,
+        total: calculateTotal(updatedItems),
+      };
     }
 
     case "CLEAR_CART":
-      // TODO: カートクリアのロジックを実装してください
-      return state;
+      return initialState;
 
     default:
       return state;
@@ -81,7 +131,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
  * useReducerを使用したショッピングカートコンポーネント
  * @returns ショッピングカートUI
  */
-const ShoppingCart: React.FC = () => {
+const ShoppingCart = () => {
   // useReducerを使用してカートの状態を管理
   const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
@@ -90,10 +140,24 @@ const ShoppingCart: React.FC = () => {
   const [itemPrice, setItemPrice] = useState<string>("");
   const [itemQuantity, setItemQuantity] = useState<string>("1");
 
-  // TODO: 商品追加処理を実装してください
   const handleAddItem = (e: React.FormEvent) => {
     e.preventDefault();
     // フォームの値を取得し、バリデーションを行い、dispatchする処理を実装
+    const price = parseFloat(itemPrice);
+    const quantity = parseInt(itemQuantity, 10);
+    if (isNaN(price) || isNaN(quantity) || quantity <= 0) {
+      alert("無効な価格または数量です");
+      return;
+    }
+    dispatch({
+      type: "ADD_ITEM",
+      payload: { name: itemName, price, quantity },
+    });
+
+    // フォームをリセット
+    setItemName("");
+    setItemPrice("");
+    setItemQuantity("1");
   };
 
   return (
@@ -141,7 +205,38 @@ const ShoppingCart: React.FC = () => {
                   <Stack direction="row" spacing={2} alignItems="center">
                     <ListItemText primary={item.name} />
                     <ListItemText primary={`価格: ${item.price}`} />
-                    <ListItemText primary={`数量: ${item.quantity}`} />
+
+                    {/* 数量調整セクション */}
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <IconButton
+                        color="primary"
+                        size="small"
+                        onClick={() =>
+                          dispatch({
+                            type: "DECREASE_QUANTITY",
+                            payload: { id: item.id },
+                          })
+                        }
+                      >
+                        <RemoveIcon fontSize="small" />
+                      </IconButton>
+
+                      <Typography>{item.quantity}</Typography>
+
+                      <IconButton
+                        color="primary"
+                        size="small"
+                        onClick={() =>
+                          dispatch({
+                            type: "INCREASE_QUANTITY",
+                            payload: { id: item.id },
+                          })
+                        }
+                      >
+                        <AddIcon fontSize="small" />
+                      </IconButton>
+                    </Stack>
+
                     <CommonButton
                       label="削除"
                       onClick={() =>

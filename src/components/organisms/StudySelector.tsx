@@ -64,7 +64,7 @@ const StudySelector = (): ReactElement => {
           ))}
         </Select>
       </FormControl>
-      <Box width={300} minHeight={300} mt={3}>
+      <Box width={800} minHeight={300} mt={3}>
         {SelectedComponent}
       </Box>
     </Box>
