@@ -10,7 +10,8 @@ import {
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import CommonButton from "@/components/atom/CommonButton";
-import { CartAction, CartState } from "@/types/shopping";
+import { CartState } from "@/features/cart/types.ts";
+import { cartActions, CartAction } from "@/features/cart/actions";
 
 // Dispatch関数の型定義
 type CartInItemPaperProps = {
@@ -37,12 +38,8 @@ const CartInItemPaper = ({ cartState, dispatch }: CartInItemPaperProps) => {
                   <Stack direction="row" spacing={1} alignItems="center">
                     <IconButton
                       color="primary"
-                      size="small"
                       onClick={() =>
-                        dispatch({
-                          type: "DECREASE_QUANTITY",
-                          payload: { id: item.id },
-                        })
+                        dispatch(cartActions.decreaseQuantity(item.id))
                       }
                     >
                       <RemoveIcon fontSize="small" />
@@ -52,12 +49,8 @@ const CartInItemPaper = ({ cartState, dispatch }: CartInItemPaperProps) => {
 
                     <IconButton
                       color="primary"
-                      size="small"
                       onClick={() =>
-                        dispatch({
-                          type: "INCREASE_QUANTITY",
-                          payload: { id: item.id },
-                        })
+                        dispatch(cartActions.increaseQuantity(item.id))
                       }
                     >
                       <AddIcon fontSize="small" />
@@ -66,12 +59,7 @@ const CartInItemPaper = ({ cartState, dispatch }: CartInItemPaperProps) => {
 
                   <CommonButton
                     label="削除"
-                    onClick={() =>
-                      dispatch({
-                        type: "REMOVE_ITEM",
-                        payload: { id: item.id },
-                      })
-                    }
+                    onClick={() => dispatch(cartActions.removeItem(item.id))}
                   />
                 </Stack>
               </ListItem>
@@ -87,7 +75,7 @@ const CartInItemPaper = ({ cartState, dispatch }: CartInItemPaperProps) => {
           <Typography variant="body1">合計金額: {cartState.total}</Typography>
           <CommonButton
             label="カートをクリア"
-            onClick={() => dispatch({ type: "CLEAR_CART" })}
+            onClick={() => dispatch(cartActions.clearCart())}
           />
         </Stack>
       </Stack>

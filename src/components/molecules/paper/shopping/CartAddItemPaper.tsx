@@ -1,8 +1,8 @@
 import { Button, Paper, Stack, Typography } from "@mui/material";
-import PostTextField from "@/components/atom/PostTextField.tsx";
+import PostTextField from "@/components/atom/PostTextField";
 import { useState } from "react";
 
-import { CartAction } from "@/types/shopping.ts";
+import { cartActions, CartAction } from "@/features/cart/actions";
 
 // Dispatch関数の型定義
 type ShoppingCartPaperProps = {
@@ -24,10 +24,8 @@ const CartAddItemPaper = ({ dispatch }: ShoppingCartPaperProps) => {
       alert("無効な価格または数量です");
       return;
     }
-    dispatch({
-      type: "ADD_ITEM",
-      payload: { name: itemName, price, quantity },
-    });
+
+    dispatch(cartActions.addItem({ name: itemName, price, quantity }));
 
     // フォームをリセット
     setItemName("");
