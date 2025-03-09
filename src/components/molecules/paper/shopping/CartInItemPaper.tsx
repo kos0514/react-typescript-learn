@@ -10,16 +10,12 @@ import {
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import CommonButton from "@/components/atom/CommonButton";
-import { CartState } from "@/features/cart/types.ts";
-import { cartActions, CartAction } from "@/features/cart/actions";
+import { cartActions } from "@/features/cart/actions";
+import { useCartContext } from "@/features/cart/context.tsx";
 
-// Dispatch関数の型定義
-type CartInItemPaperProps = {
-  cartState: CartState;
-  dispatch: React.Dispatch<CartAction>;
-};
+const CartInItemPaper = () => {
+  const { state: cartState, dispatch } = useCartContext();
 
-const CartInItemPaper = ({ cartState, dispatch }: CartInItemPaperProps) => {
   return (
     <Paper elevation={3} sx={{ p: 2 }}>
       <Stack direction="column" spacing={3}>

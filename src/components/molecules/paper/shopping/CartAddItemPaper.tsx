@@ -2,14 +2,12 @@ import { Button, Paper, Stack, Typography } from "@mui/material";
 import PostTextField from "@/components/atom/PostTextField";
 import { useState } from "react";
 
-import { cartActions, CartAction } from "@/features/cart/actions";
+import { useCartContext } from "@/features/cart/context.tsx";
+import { cartActions } from "@/features/cart/actions";
 
-// Dispatch関数の型定義
-type ShoppingCartPaperProps = {
-  dispatch: React.Dispatch<CartAction>;
-};
+const CartAddItemPaper = () => {
+  const { dispatch } = useCartContext();
 
-const CartAddItemPaper = ({ dispatch }: ShoppingCartPaperProps) => {
   // フォーム入力の状態
   const [itemName, setItemName] = useState<string>("");
   const [itemPrice, setItemPrice] = useState<string>("");
@@ -26,7 +24,6 @@ const CartAddItemPaper = ({ dispatch }: ShoppingCartPaperProps) => {
     }
 
     dispatch(cartActions.addItem({ name: itemName, price, quantity }));
-
     // フォームをリセット
     setItemName("");
     setItemPrice("");

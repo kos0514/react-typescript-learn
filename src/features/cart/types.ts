@@ -1,3 +1,5 @@
+import { CartAction } from "@/features/cart/actions";
+
 // 商品アイテムの型定義
 export type CartItem = {
   id: number;
@@ -10,4 +12,10 @@ export type CartItem = {
 export type CartState = {
   items: CartItem[];
   total: number;
+};
+
+// Contextの型定義
+export type CartContextType = {
+  state: CartState;
+  dispatch: React.Dispatch<CartAction>;
 };
