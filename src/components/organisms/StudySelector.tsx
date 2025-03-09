@@ -12,12 +12,14 @@ import {
 } from "@mui/material";
 import FocusableInput from "@/components/organisms/FocusableInput.tsx";
 import FizzBuzz from "@/components/organisms/FizzBuzz.tsx";
+import ShoppingCart from "@/components/organisms/ShoppingCart.tsx";
 
 const STUDY_COMPONENTS = {
   ToggleShowItem: <ToggleShowItem />,
   Todo: <Todo />,
   FocusableInput: <FocusableInput />,
   FizzBuzz: <FizzBuzz />,
+  ShoppingCart: <ShoppingCart />,
 } as const;
 
 type componentType = keyof typeof STUDY_COMPONENTS;

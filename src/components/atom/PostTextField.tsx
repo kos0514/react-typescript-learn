@@ -3,6 +3,10 @@ import { ReactElement } from "react";
 
 type PostTextFieldProps = {
   /**
+   * テキストフィールドが必須かどうかでございますの(未指定の場合は、falseでございますわ)
+   */
+  required?: boolean;
+  /**
    * テキストフィールドのラベルでございますわ
    */
   label: string;
@@ -24,6 +28,7 @@ type PostTextFieldProps = {
  * PostTextFieldコンポーネントでございます
  *
  * @param {PostTextFieldProps} props - テキストフィールドの「お持ち物」様でございますの
+ * @param {boolean} [props.required] - テキストフィールドが必須かどうかでございますの(未指定の場合は、falseでございますわ)
  * @param {string} props.label - テキストフィールドのラベルでございますわ
  * @param {string} props.value - テキストフィールドの値でございますの
  * @param {React.Dispatch<React.SetStateAction<string>>} props.setValue - テキストフィールドの値を設定するための関数でございますわ
@@ -39,6 +44,7 @@ type PostTextFieldProps = {
  * />
  */
 const PostTextField = ({
+  required,
   label,
   value,
   setValue,
@@ -54,12 +60,21 @@ const PostTextField = ({
 
   return (
     <TextField
+      required={required}
       label={label}
       value={value}
       onChange={handleInputChange}
       inputRef={inputRef}
     />
   );
+};
+
+/**
+ * PostTextFieldコンポーネントのデフォルトプロパティでございますの
+ */
+PostTextField.defaultProps = {
+  required: false,
+  inputRef: null,
 };
 
 export default PostTextField;

@@ -20,7 +20,7 @@ type subTitleProps = {
  * <SubTitle subTitle="サブタイトル" />
  */
 const SubTitle = ({ subTitle }: subTitleProps): ReactElement => (
-  <Typography variant="h4">{subTitle}</Typography>
+  <Typography variant="h5">{subTitle}</Typography>
 );
 
 export default SubTitle;
