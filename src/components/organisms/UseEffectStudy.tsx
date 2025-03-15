@@ -45,11 +45,11 @@ const UseEffectStudyCard = ({
  * 4. 非同期処理の扱い方
  */
 const UseEffectStudy = () => {
-  // 問題1: カウンターの状態
-  const [count, setCount] = useState<number>(0);
+  // 問題1： マウント時
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  // 問題2: 入力テキストの状態
-  const [text, setText] = useState<string>('');
+  // 問題2: カウンターの状態
+  const [count, setCount] = useState<number>(0);
 
   // 問題3: タイマー用の状態
   const [seconds, setSeconds] = useState<number>(0);
@@ -57,30 +57,41 @@ const UseEffectStudy = () => {
   // 問題4: ユーザーリスト用の状態
   const [users, setUsers] = useState<string[]>([]);
 
-  // 問題5: ウィンドウサイズの状態
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  // おまけ: 入力テキストの状態
+  const [text, setText] = useState<string>('');
 
   // 問題1: マウント時に一度だけコンソールにメッセージを表示する
   // ヒント: 依存配列を空にすると、コンポーネントがマウントされた時だけ実行されます
   useEffect(() => {
-    // ここにコードを書いてください
+    setIsMounted(true);
   }, []);
 
   // 問題2: countの値が変わるたびにドキュメントのタイトルを更新する
   // ヒント: 依存配列にcountを入れると、countが変わるたびに実行されます
   useEffect(() => {
     // ここにコードを書いてください
-  }, []);
+    document.title = `Count: ${count}`;
+
+    // クリーンアップ関数
+    return () => {
+      // ここにクリーンアップのコードを書いてください
+      document.title = 'Vite + React + TS';
+    };
+  }, [count]);
 
   // 問題3: タイマーを作成し、1秒ごとにsecondsを増やす
   // そして、コンポーネントがアンマウントされたときにタイマーをクリーンアップする
   // ヒント: setIntervalを使い、return関数でclearIntervalを実行します
   useEffect(() => {
     // ここにコードを書いてください
+    const intervalId = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
 
     // クリーンアップ関数
     return () => {
       // ここにクリーンアップのコードを書いてください
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -97,18 +108,11 @@ const UseEffectStudy = () => {
         }, 1000);
       });
     };
-  }, []);
 
-  // 問題5: ウィンドウのリサイズイベントをリッスンし、windowWidthを更新する
-  // コンポーネントのアンマウント時にイベントリスナーを削除する
-  // ヒント: window.addEventListenerとwindow.removeEventListenerを使います
-  useEffect(() => {
-    // ここにコードを書いてください
-
-    // クリーンアップ関数
-    return () => {
-      // ここにクリーンアップのコードを書いてください
-    };
+    (async () => {
+      const userData = await fetchUsers();
+      setUsers(userData);
+    })();
   }, []);
 
   return (
@@ -119,17 +123,23 @@ const UseEffectStudy = () => {
           <Typography>
             このコンポーネントがマウントされた時、コンソールに「コンポーネントがマウントされました！」と表示されるはずです。
           </Typography>
+          <Typography>
+            このコンポーネントがマウントされました：
+            {isMounted ? 'はい' : 'いいえ'}
+          </Typography>
+        </>
+      </UseEffectStudyCard>
+      <UseEffectStudyCard question="問題2: 特定の値の変更監視">
+        <>
+          <Typography>
+            カウントが変わるたびに、ドキュメントのタイトルが「Count: {count}
+            」に更新されるはずです。
+          </Typography>
           <CommonButton
             label={`カウントアップ: ${count}`}
             onClick={() => setCount((prev) => prev + 1)}
           />
         </>
-      </UseEffectStudyCard>
-      <UseEffectStudyCard question="問題2: 特定の値の変更監視">
-        <Typography>
-          カウントが変わるたびに、ドキュメントのタイトルが「Count: {count}
-          」に更新されるはずです。
-        </Typography>
       </UseEffectStudyCard>
       <UseEffectStudyCard question="問題3: タイマーとクリーンアップ">
         <>
@@ -149,14 +159,6 @@ const UseEffectStudy = () => {
               <ListItem key={index}>{user}</ListItem>
             ))}
           </List>
-        </>
-      </UseEffectStudyCard>
-      <UseEffectStudyCard question="問題5: イベントリスナーとクリーンアップ">
-        <>
-          <Typography>現在のウィンドウ幅: {windowWidth}px</Typography>
-          <Typography variant="caption">
-            （ウィンドウサイズを変更すると、この値が更新されます）
-          </Typography>
         </>
       </UseEffectStudyCard>
       <UseEffectStudyCard question="おまけ: テキスト入力と即時反映">
