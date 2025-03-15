@@ -13,6 +13,7 @@ import {
 import FocusableInput from '@/components/organisms/FocusableInput';
 import FizzBuzz from '@/components/organisms/FizzBuzz';
 import ShoppingCart from '@/components/organisms/ShoppingCart';
+import UseEffectStudy from '@/components/organisms/UseEffectStudy';
 
 const STUDY_COMPONENTS = {
   ToggleShowItem: <ToggleShowItem />,
@@ -20,6 +21,7 @@ const STUDY_COMPONENTS = {
   FocusableInput: <FocusableInput />,
   FizzBuzz: <FizzBuzz />,
   ShoppingCart: <ShoppingCart />,
+  UseEffectStudy: <UseEffectStudy />,
 } as const;
 
 type componentType = keyof typeof STUDY_COMPONENTS;
