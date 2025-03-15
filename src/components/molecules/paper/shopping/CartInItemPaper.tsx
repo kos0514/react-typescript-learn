@@ -6,12 +6,12 @@ import {
   Paper,
   Stack,
   Typography,
-} from "@mui/material";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
-import CommonButton from "@/components/atom/CommonButton";
-import { cartActions } from "@/features/cart/actions";
-import { useCartContext } from "@/features/cart/context.tsx";
+} from '@mui/material';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import CommonButton from '@/components/atom/CommonButton';
+import { cartActions } from '@/features/cart/actions';
+import { useCartContext } from '@/features/cart/context';
 
 const CartInItemPaper = () => {
   const { state: cartState, dispatch } = useCartContext();

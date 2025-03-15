@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
-import { ReactElement } from "react";
+import Typography from '@mui/material/Typography';
+import { ReactElement } from 'react';
 
 type subTitleProps = {
   /**

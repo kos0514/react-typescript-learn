@@ -1,7 +1,7 @@
-import { ReactElement, useState } from "react";
-import AddTodoForm from "@/components/molecules/AddTodoForm";
-import SubTitle from "@/components/atom/SubTitle";
-import TodoList from "@/components/molecules/TodoList";
+import { ReactElement, useState } from 'react';
+import AddTodoForm from '@/components/molecules/AddTodoForm';
+import SubTitle from '@/components/atom/SubTitle';
+import TodoList from '@/components/molecules/TodoList';
 
 /**
  * Todoコンポーネントでございます
@@ -14,9 +14,9 @@ import TodoList from "@/components/molecules/TodoList";
  */
 const Todo = (): ReactElement => {
   const [todoList, setTodoList] = useState<string[]>([
-    "交差点で100円を拾う",
-    "唐揚げを買う",
-    "荷物を取りに行く",
+    '交差点で100円を拾う',
+    '唐揚げを買う',
+    '荷物を取りに行く',
   ]);
 
   /**

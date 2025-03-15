@@ -1,4 +1,4 @@
-import { CartAction } from "@/features/cart/actions";
+import { CartAction } from '@/features/cart/actions';
 
 // 商品アイテムの型定義
 export type CartItem = {

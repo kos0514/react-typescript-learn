@@ -1,9 +1,9 @@
-import { Stack } from "@mui/material";
+import { Stack } from '@mui/material';
 
-import SubTitle from "@/components/atom/SubTitle";
-import CartAddItemPaper from "@/components/molecules/paper/shopping/CartAddItemPaper";
-import CartInItemPaper from "@/components/molecules/paper/shopping/CartInItemPaper";
-import { CartProvider } from "@/features/cart/context.tsx";
+import SubTitle from '@/components/atom/SubTitle';
+import CartAddItemPaper from '@/components/molecules/paper/shopping/CartAddItemPaper';
+import CartInItemPaper from '@/components/molecules/paper/shopping/CartInItemPaper';
+import { CartProvider } from '@/features/cart/context';
 
 /**
  * useReducerを使用したショッピングカートコンポーネント

@@ -1,5 +1,5 @@
-import { CartState, CartItem } from "@/features/cart/types";
-import { CartAction, CART_ACTION_TYPES } from "@/features/cart/actions";
+import { CartState, CartItem } from '@/features/cart/types';
+import { CartAction, CART_ACTION_TYPES } from '@/features/cart/actions';
 
 // 初期状態
 export const initialState: CartState = {

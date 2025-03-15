@@ -1,7 +1,7 @@
-import PostTextField from "@/components/atom/PostTextField";
-import CommonButton from "@/components/atom/CommonButton";
-import { ReactElement, useState } from "react";
-import { Stack } from "@mui/material";
+import PostTextField from '@/components/atom/PostTextField';
+import CommonButton from '@/components/atom/CommonButton';
+import { ReactElement, useState } from 'react';
+import { Stack } from '@mui/material';
 
 type AddTodoFormProps = {
   /**
@@ -24,17 +24,17 @@ type AddTodoFormProps = {
  * <AddTodoForm handleAddTodo={(todo) => console.log(todo)} />
  */
 const AddTodoForm = ({ handleAddTodo }: AddTodoFormProps): ReactElement => {
-  const [todoField, setTodoField] = useState<string>("");
+  const [todoField, setTodoField] = useState<string>('');
 
   /**
    * タスク追加ボタンがクリックされたときの処理でございますの
    * フィールドが空でない場合、handleAddTodo関数を呼び出し、フィールドをリセットいたしますわ
    */
   const onClickAddTodo = () => {
-    if (todoField.trim() === "") return;
+    if (todoField.trim() === '') return;
 
     handleAddTodo(todoField);
-    setTodoField("");
+    setTodoField('');
   };
 
   return (

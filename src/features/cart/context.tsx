@@ -4,10 +4,10 @@ import {
   useMemo,
   useContext,
   ReactNode,
-} from "react";
-import { cartReducer, initialState } from "@/features/cart/reducer";
+} from 'react';
+import { cartReducer, initialState } from '@/features/cart/reducer';
 
-import { CartContextType } from "@/features/cart/types";
+import { CartContextType } from '@/features/cart/types';
 
 // Contextの作成
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -33,7 +33,7 @@ export const useCartContext = (): CartContextType => {
   const context = useContext(CartContext);
   if (context === undefined) {
     throw new Error(
-      "useCartContextはCartProviderの内部で使用する必要があります。",
+      'useCartContextはCartProviderの内部で使用する必要があります。',
     );
   }
   return context;

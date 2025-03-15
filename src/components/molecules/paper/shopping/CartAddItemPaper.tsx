@@ -1,17 +1,17 @@
-import { Button, Paper, Stack, Typography } from "@mui/material";
-import PostTextField from "@/components/atom/PostTextField";
-import { useState } from "react";
+import { Button, Paper, Stack, Typography } from '@mui/material';
+import PostTextField from '@/components/atom/PostTextField';
+import { useState } from 'react';
 
-import { useCartContext } from "@/features/cart/context.tsx";
-import { cartActions } from "@/features/cart/actions";
+import { useCartContext } from '@/features/cart/context';
+import { cartActions } from '@/features/cart/actions';
 
 const CartAddItemPaper = () => {
   const { dispatch } = useCartContext();
 
   // フォーム入力の状態
-  const [itemName, setItemName] = useState<string>("");
-  const [itemPrice, setItemPrice] = useState<string>("");
-  const [itemQuantity, setItemQuantity] = useState<string>("1");
+  const [itemName, setItemName] = useState<string>('');
+  const [itemPrice, setItemPrice] = useState<string>('');
+  const [itemQuantity, setItemQuantity] = useState<string>('1');
 
   const handleAddItem = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,15 +19,15 @@ const CartAddItemPaper = () => {
     const price = parseFloat(itemPrice);
     const quantity = parseInt(itemQuantity, 10);
     if (isNaN(price) || isNaN(quantity) || quantity <= 0) {
-      alert("無効な価格または数量です");
+      alert('無効な価格または数量です');
       return;
     }
 
     dispatch(cartActions.addItem({ name: itemName, price, quantity }));
     // フォームをリセット
-    setItemName("");
-    setItemPrice("");
-    setItemQuantity("1");
+    setItemName('');
+    setItemPrice('');
+    setItemQuantity('1');
   };
 
   return (

@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { Typography, List, ListItem, Stack } from "@mui/material";
-import SubTitle from "@/components/atom/SubTitle.tsx";
-import CommonButton from "@/components/atom/CommonButton.tsx";
+import { useState, useEffect, useRef } from 'react';
+import { Typography, List, ListItem, Stack } from '@mui/material';
+import SubTitle from '@/components/atom/SubTitle';
+import CommonButton from '@/components/atom/CommonButton';
 
 /**
  * FizzBuzz問題を純粋関数的かつイミュータブルに実装したコンポーネントでございますの
@@ -22,15 +22,15 @@ const FizzBuzz = () => {
    */
   const calculateFizzBuzz = (num: number): string => {
     if (num % 15 === 0) {
-      return "FizzBuzz";
+      return 'FizzBuzz';
     }
 
     if (num % 3 === 0) {
-      return "Fizz";
+      return 'Fizz';
     }
 
     if (num % 5 === 0) {
-      return "Buzz";
+      return 'Buzz';
     }
 
     return num.toString();
@@ -94,8 +94,8 @@ const FizzBuzz = () => {
         ref={listRef}
         sx={{
           maxHeight: 200,
-          overflow: "auto",
-          border: "1px solid #ddd",
+          overflow: 'auto',
+          border: '1px solid #ddd',
           borderRadius: 1,
         }}
       >

@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
-import { Stack, Typography } from "@mui/material";
-import PostTextField from "@/components/atom/PostTextField.tsx";
-import CommonButton from "@/components/atom/CommonButton.tsx";
-import ViewOnlyTextField from "@/components/atom/ViewOnlyTextField.tsx";
+import { useRef, useState } from 'react';
+import { Stack, Typography } from '@mui/material';
+import PostTextField from '@/components/atom/PostTextField';
+import CommonButton from '@/components/atom/CommonButton';
+import ViewOnlyTextField from '@/components/atom/ViewOnlyTextField';
 
 /**
  * useRefについての学びでございますの
@@ -32,7 +32,7 @@ import ViewOnlyTextField from "@/components/atom/ViewOnlyTextField.tsx";
 const FocusableInput = () => {
   const textFieldRef = useRef<HTMLInputElement>(null);
   const lastFocusTimeRef = useRef<Date | null>(null);
-  const [postText, setPostText] = useState<string>("");
+  const [postText, setPostText] = useState<string>('');
   /**
    * テキストフィールドにフォーカスを当てる処理でございますの
    */
@@ -47,7 +47,7 @@ const FocusableInput = () => {
    * テキストフィールドの内容をクリアする処理でございますの
    */
   const onClickClear = () => {
-    setPostText("");
+    setPostText('');
   };
 
   /**
@@ -58,7 +58,7 @@ const FocusableInput = () => {
   const getLastFocusTime = (): string => {
     return lastFocusTimeRef.current
       ? lastFocusTimeRef.current.toLocaleString()
-      : "未フォーカスでございますわ";
+      : '未フォーカスでございますわ';
   };
 
   return (

@@ -1,7 +1,7 @@
-import reactLogo from "@/assets/react.svg";
-import viteLogo from "~/vite.svg";
-import { ReactElement } from "react";
-import { Link, Stack } from "@mui/material";
+import reactLogo from '@/assets/react.svg';
+import viteLogo from '~/vite.svg';
+import { ReactElement } from 'react';
+import { Link, Stack } from '@mui/material';
 
 /**
  * Logoコンポーネントでございます

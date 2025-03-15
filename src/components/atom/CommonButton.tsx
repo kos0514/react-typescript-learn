@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
-import { ReactElement, useRef } from "react";
+import { Button } from '@mui/material';
+import { ReactElement, useRef } from 'react';
 
 type commonButtonProps = {
   /**

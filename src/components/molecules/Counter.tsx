@@ -1,8 +1,8 @@
-import "@/App.css";
-import CommonButton from "@/components/atom/CommonButton.tsx";
-import { ReactElement } from "react";
-import { Stack } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import '@/App.css';
+import CommonButton from '@/components/atom/CommonButton';
+import { ReactElement } from 'react';
+import { Stack } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 type CounterProps = {
   /**
