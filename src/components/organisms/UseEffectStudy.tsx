@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 
 import CommonButton from '@/components/atom/CommonButton';
-import PostTextField from '@/components/atom/PostTextField.tsx';
-import SubTitle from '@/components/atom/SubTitle.tsx';
+import PostTextField from '@/components/atom/PostTextField';
+import SubTitle from '@/components/atom/SubTitle';
 
 /**
  * useEffectの勉強で使用する共通のCardコンポーネント
@@ -95,20 +95,18 @@ const UseEffectStudy = () => {
     };
   }, []);
 
+  const fetchUsers = async () => {
+    // 非同期処理を模擬（実際のAPIコールの代わり）
+    return new Promise<string[]>((resolve) => {
+      setTimeout(() => {
+        resolve(['ミキ', 'ハニー', 'プロデューサー', 'アイドル']);
+      }, 1000);
+    });
+  };
+
   // 問題4: 非同期関数を使ってモックユーザーデータを取得する
   // ヒント: useEffect内で非同期関数を定義して呼び出します
   useEffect(() => {
-    // ここにコードを書いてください
-    // 以下のモック関数を使ってユーザーデータを取得してください
-    const fetchUsers = async () => {
-      // 非同期処理を模擬（実際のAPIコールの代わり）
-      return new Promise<string[]>((resolve) => {
-        setTimeout(() => {
-          resolve(['ミキ', 'ハニー', 'プロデューサー', 'アイドル']);
-        }, 1000);
-      });
-    };
-
     (async () => {
       const userData = await fetchUsers();
       setUsers(userData);

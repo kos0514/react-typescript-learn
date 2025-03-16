@@ -33,13 +33,19 @@ const FocusableInput = () => {
   const textFieldRef = useRef<HTMLInputElement>(null);
   const lastFocusTimeRef = useRef<Date | null>(null);
   const [postText, setPostText] = useState<string>('');
+  // フォーカス時間を状態として管理
+  const [lastFocusTime, setLastFocusTime] =
+    useState<string>('未フォーカスでございますわ');
+
   /**
    * テキストフィールドにフォーカスを当てる処理でございますの
    */
   const onClickFocusToText = () => {
     if (textFieldRef.current) {
       textFieldRef.current.focus();
-      lastFocusTimeRef.current = new Date();
+      const date = new Date();
+      lastFocusTimeRef.current = date;
+      setLastFocusTime(date.toLocaleString());
     }
   };
 
@@ -48,17 +54,6 @@ const FocusableInput = () => {
    */
   const onClickClear = () => {
     setPostText('');
-  };
-
-  /**
-   * 最後にフォーカスが当たった時刻を取得する関数でございますの
-   *
-   * @returns {string} 最後にフォーカスが当たった時刻を文字列で返しますの。フォーカスがまだ当たっていない場合は「未フォーカス」と返しますわ
-   */
-  const getLastFocusTime = (): string => {
-    return lastFocusTimeRef.current
-      ? lastFocusTimeRef.current.toLocaleString()
-      : '未フォーカスでございますわ';
   };
 
   return (
@@ -75,10 +70,7 @@ const FocusableInput = () => {
         <CommonButton label="クリア" onClick={onClickClear} />
       </Stack>
 
-      <ViewOnlyTextField
-        label="最終フォーカス時刻"
-        value={getLastFocusTime()}
-      />
+      <ViewOnlyTextField label="最終フォーカス時刻" value={lastFocusTime} />
 
       <ViewOnlyTextField
         label="入力文字数"
